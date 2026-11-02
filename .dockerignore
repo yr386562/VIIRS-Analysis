@@ -1,0 +1,12 @@
+# Only the server's modules, requirements.txt and static/ go into the image (Containerfile).
+cache/
+dist/
+user_areas/
+docs/
+deploy/
+*.log
+config.json
+start.ps1
+*.bat
+__pycache__/
+README.md

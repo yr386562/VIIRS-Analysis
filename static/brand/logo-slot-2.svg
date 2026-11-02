@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="158" height="112" viewBox="0 0 158 112">
+  <!-- Placeholder logo slot 2: replace this file with a partner logo of any width; it is shown 56 px high. -->
+  <rect x="2" y="2" width="154" height="108" rx="14" fill="none" stroke="#6e6e78" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="79" y="66" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="600" fill="#6e6e78">LOGO 2</text>
+</svg>

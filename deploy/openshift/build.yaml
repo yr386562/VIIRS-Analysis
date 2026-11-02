@@ -1,0 +1,29 @@
+# In-cluster image build from a local folder (see build.ps1): oc start-build temper-viewer --from-dir=<staged folder>.
+# The build installs requirements.txt from PyPI, so the cluster's builds need access to PyPI or a mirror.
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: temper-viewer
+  labels:
+    app: temper-viewer
+spec:
+  lookupPolicy:
+    local: true
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: temper-viewer
+  labels:
+    app: temper-viewer
+spec:
+  source:
+    type: Binary
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Containerfile
+  output:
+    to:
+      kind: ImageStreamTag
+      name: temper-viewer:latest

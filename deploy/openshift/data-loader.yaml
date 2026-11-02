@@ -1,0 +1,28 @@
+# Temporary pod to copy the country folders into temper-data with oc rsync (see README). Delete it afterwards:
+# with a ReadWriteOnce volume it must not run while the viewer needs the volume on another node.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: temper-data-loader
+  labels:
+    app: temper-viewer
+spec:
+  securityContext:
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+    - name: loader
+      image: registry.access.redhat.com/ubi9/ubi:latest
+      command: ["sleep", "infinity"]
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop: ["ALL"]
+      volumeMounts:
+        - name: data
+          mountPath: /data
+  volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: temper-data

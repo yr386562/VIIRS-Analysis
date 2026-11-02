@@ -1,0 +1,86 @@
+# TEMPER viewer. One replica: the open country is server-wide state and the cache volume is ReadWriteOnce.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: temper-viewer
+  labels:
+    app: temper-viewer
+  annotations:
+    # Roll out automatically whenever a new image is built into the temper-viewer ImageStream (build.yaml).
+    image.openshift.io/triggers: >-
+      [{"from":{"kind":"ImageStreamTag","name":"temper-viewer:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"viewer\")].image"}]
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: temper-viewer
+  template:
+    metadata:
+      labels:
+        app: temper-viewer
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: viewer
+          image: temper-viewer:latest
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: TEMPER_HOST
+              value: "0.0.0.0"
+            - name: TEMPER_PORT
+              value: "8080"
+            - name: TEMPER_DATA_ROOT
+              value: /data
+            - name: TEMPER_LR_ROOT          # LIGHT ROAST: Black Marble country folders (raw_data only)
+              value: /data/_lightroast
+            - name: TEMPER_CACHE
+              value: /cache
+            # Host names the API answers. "*" is fine behind the route (it only forwards its own host);
+            # set the route's host name instead to pin it.
+            - name: TEMPER_ALLOWED_HOSTS
+              value: "*"
+            - name: TEMPER_HOT_BUDGET
+              value: "100"
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1536Mi
+            limits:
+              cpu: "2"
+              memory: 4Gi
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 20
+            timeoutSeconds: 5
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: data
+              mountPath: /data
+              readOnly: true
+            - name: cache
+              mountPath: /cache
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: temper-data
+        - name: cache
+          persistentVolumeClaim:
+            claimName: temper-cache

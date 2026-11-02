@@ -1,0 +1,22 @@
+# HTTPS route to the viewer. The viewer has no login of its own: anyone who can reach this route can use it.
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: temper-viewer
+  labels:
+    app: temper-viewer
+  annotations:
+    # A long-period chart right after a country's nights are first prepared can take minutes.
+    haproxy.router.openshift.io/timeout: 5m
+    # Recommended: only let your networks in (space-separated CIDRs).
+    # haproxy.router.openshift.io/ip_whitelist: "10.0.0.0/8 172.16.0.0/12 192.168.0.0/16"
+spec:
+  # host: temper.apps.example.com   # leave out to get temper-viewer-<project>.<cluster apps domain>
+  to:
+    kind: Service
+    name: temper-viewer
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

@@ -1,0 +1,20 @@
+# This computer's settings (data paths, tuned parameters): see config.example.json
+config.json
+
+# Made by the viewer as it runs
+cache/
+user_areas/
+static/lab/
+*.log
+__pycache__/
+*.pyc
+
+# Builds (build_standalone.py)
+dist/
+
+# Editors and systems
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store

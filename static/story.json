@@ -1,0 +1,223 @@
+{
+  "_about": "The tour's story, per country (folder name): one real place walked through from choosing it to its step, chosen from the data (README, 'The tour'). Coordinates are the grid's (EPSG:6933, metres); the server asks the story's questions ahead (server.py, story_requests), so the tour's answers are ready. Each text is [Hebrew, English].",
+  "Saudi Arabia": {
+    "night": "2026-02-10",
+    "seed": {
+      "x": 4836375.0,
+      "y": 3064875.0,
+      "size_km": 3.75,
+      "lonlat": [
+        50.125,
+        24.77
+      ]
+    },
+    "change": {
+      "product": "lightroast",
+      "id": "dimmer:2026-02-10:50.133:24.770"
+    },
+    "partner": {
+      "x": 4838625.0,
+      "y": 3053625.0,
+      "size_km": 2.25,
+      "lonlat": [
+        50.148,
+        24.673
+      ]
+    },
+    "related": {
+      "x": 4837875.0,
+      "y": 3065625.0,
+      "size_km": 2.25,
+      "seed": "lightroast",
+      "target": "lightroast",
+      "onset": "2026-02-10",
+      "last": "2026-03-03",
+      "kind": "dimmer",
+      "regional": false
+    },
+    "search": {
+      "product": "lightroast",
+      "query": "shape = step AND direction = down AND when BETWEEN 2026-02-01 AND 2026-02-28"
+    },
+    "welcome": [
+      "הסיור עובר על מקום אמיתי אחד בערב הסעודית, שנבחר מתוך הנתונים: בוחרים נקודה, מוצאים בה את נקודת השינוי, קוראים את הגרף בחום ובאור, מוצאים מקום שזז איתה ומזהים מדרגה. אחר כך שאר הכלים.",
+      "The tour walks through one real place in Saudi Arabia, chosen from the data: choose a point, find its change point, read its graph in heat and in light, find a place that moves with it and recognise a step. Then the rest of the tools."
+    ],
+    "steps": {
+      "point": [
+        [
+          "הסיור בחר נקודה במדבר של המחוז המזרחי: **50.125°E 24.770°N**. לחיצה על המפה פותחת את המקום לאורך זמן: ריבוע של 3.75 ק״מ, והממוצע של הפיקסלים שבו בכל לילה, בשני הגרפים.",
+          "The tour chose a point in the desert of the Eastern Province: **50.125°E 24.770°N**. A click on the map opens the place over time: a 3.75 km square, the average of its pixels on each night, in both graphs."
+        ],
+        [
+          "בעצמכם: לחיצה בכל מקום על המפה. **Shift+לחיצה** או **A** מוסיפים מקום ליד אלה שפתוחים.",
+          "Yourself: click anywhere on the map. **Shift+click** or **A** adds a place beside the open ones."
+        ]
+      ],
+      "change": [
+        [
+          "יומן השינויים מצא אותו: **התעמעם · 10 בפברואר 2026 · מובהקות חזקה**. מאותו לילה המקום חשוך, ושינוי כזה לא קרה בו באף שבוע אחר בשנה. הלילות שלו מוצללים בגרף, והוא מסומן על המפה.",
+          "The change log found it: **Dimmer · 10 February 2026 · strong**. From that night the place is dark, and it never changed like this in any other week of the year. Its nights are shaded in the graph, and it is marked on the map."
+        ],
+        [
+          "כך מוצאים נקודת שינוי בעצמכם: ברשימה (**הכל**: כל השינויים מתחילת הנתונים), בסימון על המפה, או בלחיצה בגרף על הלילה שבו הקו קופץ: המפה עוברת ללילה הזה.",
+          "To find one yourself: in the list (**All**: every change since the data began), a mark on the map, or a click in the graph on the night the line jumps: the map moves to that night."
+        ]
+      ],
+      "heat": [
+        [
+          "ב־27 מתוך 34 הלילות שנמדדו בין 15 בנובמבר ל־1 בינואר TEMPER ראה כאן להבה: הנקודות שבולטות מעל הקו. מ־2 בינואר: לילה אחד מתוך 264. להבה שבערה כשישה שבועות, ונכבתה.",
+          "On 27 of the 34 nights measured between 15 November and 1 January, TEMPER saw a flame here: the dots standing above the line. From 2 January: one night out of 264. A flame that burned for about six weeks, then went out."
+        ],
+        [
+          "לקרוא את הגרף: הזמן לרוחב, כל נקודה היא לילה. נקודה חלולה: לילה שנמדד רק בחלקו. קו קטן בתחתית: ענן.",
+          "Reading it: time runs across, each dot is a night. A hollow dot: a night measured only in part. A small tick at the bottom: cloud."
+        ]
+      ],
+      "light": [
+        [
+          "האור: כ־15 nW בתחילת נובמבר; מאמצע נובמבר עד סוף דצמבר חציון של 78 nW, ושיא של 446 nW ב־21 בדצמבר; בינואר חזרה לכ־13; ומ־10 בפברואר 2.2 nW.",
+          "The light: about 15 nW in early November; from mid-November to the end of December a median of 78 nW, peaking at 446 nW on 21 December; back to about 13 in January; and from 10 February, 2.2 nW."
+        ],
+        [
+          "חום ואור יחד: אתר עבודה מואר עם להבה, שפעל כשלושה חודשים ופונה. כך נראית, למשל, אסדת קידוח שבודקת באר.",
+          "Heat and light together: a lit work site with a flame, active for about three months and then cleared. A drilling rig testing a well looks like this, for example."
+        ]
+      ],
+      "related": [
+        [
+          "**≈** שאל: מי עוד השתנה כך באותו לילה? בין התשובות, מקום 11.5 ק״מ דרומה שהאור שלו ירד מכ־7 ל־0.8 nW באותו לילה בדיוק. הוא נפתח כ־**#2**.",
+          "**≈** asked: who else changed like this on the same night? Among the answers, a place 11.5 km south whose light fell from about 7 to 0.8 nW on exactly that night. It opened as **#2**."
+        ],
+        [
+          "הגרף התמקד בשבועות שסביב השינוי, והסקאלה עברה ל**שינוי**: כל מקום מול החציון שלו בתקופה שבגרף, כך ששני הקווים צונחים יחד ב־10 בפברואר למרות שהבהירות שלהם שונה. שני מקומות שמשתנים באותו לילה הם כנראה סיפור אחד: כאן, כנראה האתר ומה שסביבו.",
+          "The graph zoomed to the weeks around the change, and the scale switched to **Change**: each place against its own median over the period shown, so both lines drop together on 10 February although their brightness differs. Two places that change on the same night are probably one story: here, most likely the site and what was around it."
+        ]
+      ],
+      "step": [
+        [
+          "**חיפוש** לפי התנהגות מחפש את הצורה של שנה שלמה; **מדרגה** היא שינוי אחד שנשאר. החיפוש של **מדרגה למטה בפברואר** מוצא 14 מקומות שירדו אז ונשארו למטה. הראשון הוא המקום שלנו (פי 6.4, ב־10 בפברואר), וביניהם קבוצה: שישה מקומות בתוך 29 ק״מ, בין 10 ל־18 בפברואר.",
+          "**Search** by behaviour looks for the shape of a whole year; a **step** is one change that stays. The search for **a step down in February** finds 14 places that dropped then and stayed down. The first is our place (×6.4, on 10 February), and among them a group: six places within 29 km, between 10 and 18 February."
+        ],
+        [
+          "הקו המקווקו על הגרף הוא הצורה שנמצאה לכל מקום: הרמה לפני והרמה אחרי. שינוי אמיתי נראה כך: הוא נשאר. הבהוב של לילה אחד לא.",
+          "The dashed line on the graph is the shape found for each place: its level before and after. A real change looks like this: it stays. A one-night flicker does not."
+        ]
+      ]
+    },
+    "window": [
+      "2026-01-05",
+      "2026-03-20"
+    ]
+  },
+  "Israel": {
+    "night": "2026-03-07",
+    "seed": {
+      "x": 3370125.0,
+      "y": 3652875.0,
+      "size_km": 2.25,
+      "lonlat": [
+        34.929,
+        29.947
+      ]
+    },
+    "change": {
+      "product": "lightroast",
+      "id": "new:2026-02-21:34.929:29.953"
+    },
+    "partner": {
+      "x": 3358875.0,
+      "y": 3844125.0,
+      "size_km": 2.25,
+      "lonlat": [
+        34.812,
+        31.686
+      ]
+    },
+    "related": {
+      "x": 3370125.0,
+      "y": 3652875.0,
+      "size_km": 2.25,
+      "seed": "lightroast",
+      "target": "lightroast",
+      "onset": "2026-03-07",
+      "last": "2026-03-07",
+      "ask": "corr",
+      "regional": false
+    },
+    "search": {
+      "product": "lightroast",
+      "query": "shape = step AND direction = up"
+    },
+    "welcome": [
+      "הסיור עובר על מקום אמיתי אחד בישראל, שנבחר מתוך הנתונים: בוחרים נקודה, מוצאים בה את נקודת השינוי, קוראים את הגרף בחום ובאור, מוצאים מקום שזז איתה ומזהים מדרגה. אחר כך שאר הכלים.",
+      "The tour walks through one real place in Israel, chosen from the data: choose a point, find its change point, read its graph in heat and in light, find a place that moves with it and recognise a step. Then the rest of the tools."
+    ],
+    "steps": {
+      "point": [
+        [
+          "הסיור בחר נקודה בדרום הנגב, כ־45 ק״מ צפונית לאילת: **34.929°E 29.947°N**. לחיצה על המפה פותחת את המקום לאורך זמן: ריבוע של 2.25 ק״מ, והממוצע של הפיקסלים שבו בכל לילה, בשני הגרפים.",
+          "The tour chose a point in the southern Negev, about 45 km north of Eilat: **34.929°E 29.947°N**. A click on the map opens the place over time: a 2.25 km square, the average of its pixels on each night, in both graphs."
+        ],
+        [
+          "בעצמכם: לחיצה בכל מקום על המפה. **Shift+לחיצה** או **A** מוסיפים מקום ליד אלה שפתוחים.",
+          "Yourself: click anywhere on the map. **Shift+click** or **A** adds a place beside the open ones."
+        ]
+      ],
+      "change": [
+        [
+          "יומן השינויים מצא אותו: **נדלק · 21 בפברואר עד 7 במרץ 2026 · מובהקות חזקה**. המקום היה חשוך ונדלק, והיומן קישר את זה לילה אחרי לילה, 15 לילות. הלילות שלו מוצללים בגרף, והוא מסומן על המפה.",
+          "The change log found it: **New · 21 February to 7 March 2026 · strong**. The place was dark and lit up, and the log linked it night after night, for 15 nights. Its nights are shaded in the graph, and it is marked on the map."
+        ],
+        [
+          "כך מוצאים נקודת שינוי בעצמכם: ברשימה (**הכל**: כל השינויים מתחילת הנתונים), בסימון על המפה, או בלחיצה בגרף על הלילה שבו הקו קופץ: המפה עוברת ללילה הזה.",
+          "To find one yourself: in the list (**All**: every change since the data began), a mark on the map, or a click in the graph on the night the line jumps: the map moves to that night."
+        ]
+      ],
+      "heat": [
+        [
+          "TEMPER לא ראה כאן חום אף לילה בשנה: הקו שלו שטוח, ברמת הרעש. כלומר מה שהשתנה כאן הוא אור, לא אש.",
+          "TEMPER saw no heat here on any night of the year: its line is flat, at the noise level. So what changed here is light, not fire."
+        ],
+        [
+          "לקרוא את הגרף: הזמן לרוחב, כל נקודה היא לילה. נקודה חלולה: לילה שנמדד רק בחלקו. קו קטן בתחתית: ענן.",
+          "Reading it: time runs across, each dot is a night. A hollow dot: a night measured only in part. A small tick at the bottom: cloud."
+        ]
+      ],
+      "light": [
+        [
+          "האור: כ־2.3 nW עד פברואר, ומתחילת מרץ כ־16.6 nW, ונשאר כך עד היום.",
+          "The light: about 2.3 nW until February, and from early March about 16.6 nW, and it has stayed so ever since."
+        ],
+        [
+          "אור חדש שנשאר, בלי חום: אתר חדש, בנייה, או תאורה שהותקנה. מה שחשוב הוא שהוא נשאר: שינוי של לילה אחד היה נעלם.",
+          "New light that stayed, without heat: a new site, construction, or lighting put up. What matters is that it stayed: a one-night change would have gone away."
+        ]
+      ],
+      "related": [
+        [
+          "**≈** שאל: מה זז יחד עם המקום הזה לאורך השנה? הראשון ברשימה, r = 0.79: מקום כ־190 ק״מ צפונה, ליד 34.812°E 31.686°N, שגם האור שלו עלה באביב (מכ־2.4 לכ־5.7 nW) ונשאר. הוא נפתח כ־**#2**.",
+          "**≈** asked: what moves with this place over the year? First in the list, r = 0.79: a place about 190 km north, near 34.812°E 31.686°N, whose light also rose in spring (from about 2.4 to 5.7 nW) and stayed. It opened as **#2**."
+        ],
+        [
+          "הגרף התמקד בחודשים שסביב השינוי, והסקאלה עברה ל**שינוי**: כל מקום מול החציון שלו בתקופה שבגרף. שניהם נמוכים בחורף וגבוהים מהאביב, וזה מה שהמתאם מודד: אותה צורה לאורך השנה, אחרי שמנכים את מה שמשותף לכל המדינה.",
+          "The graph zoomed to the months around the change, and the scale switched to **Change**: each place against its own median over the period shown. Both are low in winter and high from spring, which is what the correlation measures: the same shape over the year, after removing what the whole country shares."
+        ]
+      ],
+      "step": [
+        [
+          "**חיפוש** לפי התנהגות מחפש את הצורה של שנה שלמה; **מדרגה** היא שינוי אחד שנשאר. החיפוש של **מדרגה למעלה** מוצא 8 מקומות בישראל שעלו פעם אחת ונשארו. הראשון הוא המקום שלנו: המדרגה הגדולה ביותר, פי 4.2 ב־7 במרץ (אחרי שמנכים את מה שמשותף לכל המדינה). גם #2 ביניהם.",
+          "**Search** by behaviour looks for the shape of a whole year; a **step** is one change that stays. The search for **a step up** finds 8 places in Israel that rose once and stayed. The first is our place: the largest step, ×4.2 on 7 March (after removing what the whole country shares). #2 is among them too."
+        ],
+        [
+          "הקו המקווקו על הגרף הוא הצורה שנמצאה לכל מקום: הרמה לפני והרמה אחרי. שינוי אמיתי נראה כך: הוא נשאר. הבהוב של לילה אחד לא.",
+          "The dashed line on the graph is the shape found for each place: its level before and after. A real change looks like this: it stays. A one-night flicker does not."
+        ]
+      ]
+    },
+    "window": [
+      "2026-01-10",
+      "2026-05-20"
+    ]
+  }
+}

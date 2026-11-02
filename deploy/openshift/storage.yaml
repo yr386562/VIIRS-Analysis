@@ -1,0 +1,29 @@
+# temper-data: the country folders (Iran/, Saudi Arabia/, Yemen/ with raw_data and proccessed_data),
+#   mounted read only at /data. Half a year of the three-country pull is 129 GB, mostly the per-pass
+#   provenance.npz files; M11/M15/M16 (bands.py) add ~33 MB per bundle, ~48 GB. A full year is about 360 GB, plus ~70 GB of LIGHT ROAST night lights (/data/_lightroast).
+# temper-cache: the prepared nightly layers with M11, M15/M16 and clouds (~23-106 MB per night per country),
+#   about 80 GB for a full year of three countries. Rebuilt automatically if lost.
+# storageClassName is left to the cluster default; set it if your cluster needs a specific class.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: temper-data
+  labels:
+    app: temper-viewer
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 500Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: temper-cache
+  labels:
+    app: temper-viewer
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 150Gi

@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VIIRS · Analyze. Study. Observe.</title><link rel="icon" href="brand/viirs-icon-small.png"><link rel="stylesheet" href="app.css"><script src="i18n-en.js"></script><script src="i18n.js"></script></head>
+<!-- Two products on one workspace: TEMPER (SWIR fires and flares) and LIGHT ROAST (night-lights change). data-product
+     sets the colour theme and shows the sections marked data-only for it; country, map view, layers and sampling
+     windows are shared. -->
+<body data-product="temper">
+<!-- Opening (intro.js): "VIIRS · Analyze. Study. Observe.", an experience in eight full-screen scenes over a field of
+     stars: what the satellite and its sensor are and what they can see, in NASA's own imagery (static/media, credited
+     where shown), then the two products to choose from. Enter (or Space, the arrows, the wheel, a swipe, the dots, the
+     hint at the bottom) moves from scene to scene; keys 1 and 2 choose a product from anywhere. The chosen product plays
+     its opening animation (a click or any key skips it) and the viewer opens with it, on the country opened meanwhile. -->
+<div id="intro" class="intro launch">
+  <div class="launch-panel exp" role="dialog" aria-modal="true" aria-labelledby="launchTitle">
+    <canvas class="exp-stars" aria-hidden="true"></canvas>
+    <header class="exp-bar">
+      <span class="exp-mark" dir="ltr"><img class="exp-logo" src="brand/viirs-logo.png" alt=""><span><b>VIIRS</b> <em>Analyze. Study. Observe.</em></span></span>
+      <span class="exp-bar-end">
+        <span class="seg lang-seg" role="group" aria-label="שפה"><button data-lang-set="he" title="עברית">עב</button><button data-lang-set="en" title="English">EN</button></span>
+        <button class="exp-skip" data-goto="ch-cafe">ישר למוצרים</button>
+      </span>
+    </header>
+    <nav class="exp-nav" aria-label="פרקים">
+      <button data-goto="ch-hero" title="VIIRS"><i></i></button>
+      <button data-goto="ch-sat" title="הלוויין"><i></i></button>
+      <button data-goto="ch-sense" title="החיישן"><i></i></button>
+      <button data-goto="ch-moon" title="אור ירח"><i></i></button>
+      <button data-goto="ch-see" title="האזור שלנו, בלילה"><i></i></button>
+      <button data-goto="ch-cards" title="מה רואים מכאן"><i></i></button>
+      <button data-goto="ch-together" title="ביחד, הם אומרים מה קרה"><i></i></button>
+      <button data-goto="ch-cafe" title="המוצרים"><i></i></button>
+    </nav>
+
+    <!-- Earth at night, turning: NASA's Black Marble 2016 globe, among the stars -->
+    <section class="ch exp-hero" id="ch-hero">
+      <video class="exp-video" autoplay muted loop playsinline preload="auto" poster="media/earth-night.jpg" aria-hidden="true"><source src="media/earth-night.mp4" type="video/mp4"></video>
+      <div class="exp-hero-text">
+        <p class="exp-eyebrow" dir="ltr">SUOMI NPP · VIIRS · 750 m · EVERY NIGHT</p>
+        <h1 id="launchTitle" class="exp-title" dir="ltr">VIIRS</h1>
+        <p class="exp-tagline" dir="ltr"><span>Analyze.</span> <span>Study.</span> <span>Observe.</span></p>
+        <p class="exp-sub">כדור הארץ בלילה, כפי שלוויין אחד רואה אותו. כל לילה, כל מקום: מה השתנה, ולמה.</p>
+        <div class="exp-cta"><button class="exp-go" data-next>להתחיל <kbd dir="ltr">Enter ↵</kbd></button><button class="exp-ghost" data-goto="ch-cafe">ישר למוצרים <kbd>1</kbd> <kbd>2</kbd></button></div>
+      </div>
+      <p class="exp-credit" dir="ltr">Black Marble 2016 · NASA Goddard Space Flight Center</p>
+    </section>
+
+    <!-- 01 The satellite: its orbit drawn around the globe, the numbers counting up -->
+    <section class="ch exp-split" id="ch-sat">
+      <figure class="exp-fig globe"><div class="globe-wrap"><img src="media/bluemarble-viirs.jpg" alt="כדור הארץ ביום, מחובר מארבעה מעברים של VIIRS">
+          <svg class="orbit" viewBox="0 0 400 400" aria-hidden="true"><g transform="rotate(-22 200 200)"><path id="orbitPath" d="M 6 200 A 194 64 0 1 0 394 200 A 194 64 0 1 0 6 200"/><circle class="sat" r="5"><animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#orbitPath"/></animateMotion></circle></g></svg></div>
+        <figcaption>Blue Marble, 4 בינואר 2012: ארבעה מעברים של VIIRS על כדור אחד. <span dir="ltr">NASA/NOAA/GSFC/Suomi NPP/VIIRS/Norman Kuring</span></figcaption></figure>
+      <div class="exp-copy">
+        <p class="exp-num"><span dir="ltr">01</span>הלוויין</p>
+        <h2>Suomi NPP מקיף את כדור הארץ 14 פעמים ביממה</h2>
+        <p>בגובה 824 ק״מ, במסלול מסונכרן־שמש, הוא עובר מעל כל מקום בערך באותה שעה מקומית: בסביבות 13:30, ושוב בסביבות 01:30. המעבר של 01:30 הוא המקור של כל מה שבמציג: לילה אחרי לילה, באותה שעה, על אותה רשת של 750 מטר.</p>
+        <dl class="exp-facts">
+          <div><dt>גובה</dt><dd dir="ltr" data-count="824">824 km</dd></div>
+          <div><dt>הקפה אחת</dt><dd dir="ltr" data-count="101">101 min</dd></div>
+          <div><dt>רוחב סריקה</dt><dd dir="ltr" data-count="3040">3,040 km</dd></div>
+          <div><dt>במסלול מאז</dt><dd dir="ltr">28.10.2011</dd></div>
+        </dl>
+        <p class="exp-aside" id="expAge"></p>
+      </div>
+    </section>
+
+    <!-- 02 The sensor and how it senses: a passive radiometer; Planck's law says which band sees what -->
+    <section class="ch exp-sense" id="ch-sense">
+      <div class="exp-copy wide">
+        <p class="exp-num"><span dir="ltr">02</span>החיישן</p>
+        <h2>VIIRS לא מצלם. הוא מודד אור וחום.</h2>
+        <p>רדיומטר פסיבי ב־22 ערוצים: הוא לא שולח דבר, רק מודד כמה אנרגיה יוצאת מכל פיקסל בכל אורך גל. כל גוף פולט אור לפי החום שלו, והשיא זז לגלים קצרים ככל שהוא חם יותר. הקרקע, בכ־27°C, פולטת בעיקר בתרמי. להבה, בכ־1,500°C, פולטת באינפרא־אדום הקצר, שם הקרקע כמעט חשוכה. לכן להבה של כמה מטרים בולטת בתוך פיקסל של 750 מטר.</p>
+      </div>
+      <figure class="spectrum" id="spectrum">
+        <svg id="specSvg" viewBox="0 0 1000 330" role="img" aria-label="קרינת גוף שחור: הקרקע מול מקור חם, וערוצי VIIRS על ציר אורך הגל"></svg>
+        <div class="spec-ctl">
+          <label for="specT">טמפרטורת המקור</label>
+          <input type="range" id="specT" min="300" max="2500" step="10" value="1800">
+          <output id="specTout" dir="ltr"></output>
+          <span class="spec-presets"><button data-t="300">קרקע</button><button data-t="1000">שריפת צמחייה</button><button data-t="1800">להבת גז</button></span>
+        </div>
+        <div class="spec-read" id="specRead" aria-live="polite"></div>
+        <figcaption>חוק פלאנק, מחושב כאן. כל ערוץ הוא חלון באותה קשת: <b>DNB</b> לאורות, <b>M10/M11</b> לאש, <b>M15/M16</b> לקרקע ולעננים.</figcaption>
+      </figure>
+    </section>
+
+    <!-- 03 The day/night band, by moonlight -->
+    <section class="ch exp-split rev" id="ch-moon">
+      <div class="exp-copy">
+        <p class="exp-num"><span dir="ltr">03</span>ערוץ היום/לילה</p>
+        <h2>רגיש מספיק לראות לפי אור ירח</h2>
+        <p>אותו מפרץ, שני לילות של 2012. בירח מלא, המדבר, החופים והעננים נראים באור הירח. בירח חדש נשארים רק האורות: ערים, כבישים, שדות נפט ואוניות. גררו את הקו.</p>
+        <p>מכאן הבחירה של LIGHT ROAST: הוא עובד מ־Black Marble של NASA, שמנכה את אור הירח, את האטמוספרה ואת ההחזר של פני הקרקע, כך שמה שנשאר הוא האור של בני האדם.</p>
+      </div>
+      <figure class="compare" id="moonCompare">
+        <img class="cmp-under" src="media/gulf-newmoon.jpg" alt="המפרץ הפרסי בירח חדש, 15 באוקטובר 2012">
+        <div class="cmp-over"><img src="media/gulf-fullmoon.jpg" alt="המפרץ הפרסי בירח מלא, 30 בספטמבר 2012"></div>
+        <span class="cmp-line" aria-hidden="true"></span>
+        <span class="cmp-tag full">ירח מלא · <span dir="ltr">30.9.2012</span></span><span class="cmp-tag new">ירח חדש · <span dir="ltr">15.10.2012</span></span>
+        <input class="cmp-range" type="range" min="0" max="100" value="50" aria-label="השוואה: ירח מלא מול ירח חדש">
+        <figcaption>VIIRS Day/Night Band. <span dir="ltr">NASA Earth Observatory · Jesse Allen, Robert Simmon</span></figcaption>
+      </figure>
+    </section>
+
+    <!-- 04 The region at night: the countries with data light up one after another -->
+    <section class="ch exp-see" id="ch-see">
+      <div class="exp-copy wide">
+        <p class="exp-num"><span dir="ltr">04</span>מה רואים מכאן</p>
+        <h2>האזור שלנו, בלילה</h2>
+      </div>
+      <figure class="exp-map" id="expMap">
+        <div class="exp-map-frame"><img src="media/mideast-night.jpg" alt="המזרח התיכון בלילה, Black Marble 2016">
+        <span class="map-pin" data-country="Israel" data-lon="35.0" data-lat="31.4"><i></i><b>ישראל</b></span>
+        <span class="map-pin" data-country="Saudi Arabia" data-lon="45.0" data-lat="24.2"><i></i><b>ערב הסעודית</b></span>
+        <span class="map-pin" data-country="Iran" data-lon="53.7" data-lat="32.6"><i></i><b>איראן</b></span>
+        <span class="map-pin" data-country="Yemen" data-lon="47.6" data-lat="15.7"><i></i><b>תימן</b></span></div>
+        <figcaption>Black Marble 2016, ממוצע הלילות הבהירים של שנה. בנקודות: המדינות שיש להן נתונים במחשב הזה. <span dir="ltr">NASA Goddard Space Flight Center · Miguel Román, Joshua Stevens</span></figcaption>
+      </figure>
+    </section>
+
+    <!-- 05 Three things it is good at -->
+    <section class="ch exp-cards-ch" id="ch-cards">
+      <div class="exp-copy wide">
+        <p class="exp-num"><span dir="ltr">05</span>מה הוא מגלה</p>
+        <h2>להבות, הפסקות, ואיפה חיים אנשים</h2>
+      </div>
+      <div class="exp-cards">
+        <figure class="exp-card"><img src="media/gulf-night.jpg" alt="המפרץ הפרסי בלילה">
+          <figcaption><b>להבות ותעשייה</b><span>רוב הנקודות בתוך המים הן אסדות נפט וגז ולהבות. TEMPER רואה כל להבה בערוצי האש, מודד את החום שלה, ויודע מתי היא גדלה או כבתה.</span><small dir="ltr">Black Marble 2016 · NASA GSFC</small></figcaption></figure>
+        <figure class="exp-card"><img src="media/puertorico-blackout.jpg" alt="פוארטו ריקו בלילה, ספטמבר 2017">
+          <figcaption><b>הפסקות חשמל</b><span>פוארטו ריקו אחרי הוריקן מריה, 2017: אורות הלילה הראו איפה החשמל נפל ואיפה חזר, שכונה אחרי שכונה. LIGHT ROAST מחפש את אותו דבר, לילה אחרי לילה.</span><small dir="ltr">NASA Black Marble · NASA GSFC</small></figcaption></figure>
+        <figure class="exp-card tall"><img src="media/nile-night.jpg" alt="עמק הנילוס בלילה">
+          <figcaption><b>איפה חיים אנשים</b><span>הנילוס הוא נהר של אור: כל עיר וכפר לאורכו. אור חדש שנשאר מספר על בנייה, כבישים ויישובים חדשים.</span><small dir="ltr">Black Marble 2016 · NASA GSFC</small></figcaption></figure>
+      </div>
+    </section>
+
+    <!-- 06 Together: what heat and light at one place, on one night, say it was (the causes in the change list) -->
+    <section class="ch exp-together-ch" id="ch-together">
+      <div class="exp-copy wide">
+        <p class="exp-num"><span dir="ltr">06</span>חום וחשמל</p>
+        <h2>ביחד, הם אומרים מה קרה</h2>
+        <p>TEMPER רואה חום, LIGHT ROAST רואה אור. באותו מקום ובאותו לילה, השילוב אומר מה זה היה.</p>
+      </div>
+      <div class="exp-together">
+        <table class="sig-table">
+          <thead><tr><th class="t">TEMPER · חום</th><th class="l">LIGHT ROAST · חשמל</th><th>מה זה</th></tr></thead>
+          <tbody>
+            <tr title="מתקן נפט או גז ששורף גז עודף. בוער ברוב הלילות; השינוי הוא בגודל הלהבה."><td><i class="heat">חום קבוע</i></td><td><i class="light">אור</i></td><td><b>לפיד גז</b></td></tr>
+            <tr title="חום במקום שבדרך כלל קר, לילה אחד או כמה, גם כשהאש קטנה בהרבה מהפיקסל."><td><i class="heat">חום חדש</i></td><td><i class="light">אור</i></td><td><b>שריפה</b></td></tr>
+            <tr title="תאורת מתקנים עד 10 ק״מ מלפיד קבוע: שדה שנפתח, מתרחב או נסגר."><td class="no">—</td><td><i class="light">אור ליד לפיד</i></td><td><b>שדה נפט וגז</b></td></tr>
+            <tr title="חמישה מקומות ויותר באזור כבו, או ירדו לפחות מחצי, בתוך יומיים."><td class="no">—</td><td><i class="light down">כבים יחד</i></td><td><b>הפסקת חשמל</b></td></tr>
+            <tr title="יישוב, כביש, מפעל או אתר בנייה שנדלקו ונשארו דלוקים."><td class="no">—</td><td><i class="light">חדש שנשאר</i></td><td><b>תאורה</b></td></tr>
+            <tr class="quiet" title="מקומות רבים זזים יחד, מעט: לא שינוי אמיתי, ומסומן כך כדי לא לבלבל."><td class="no">—</td><td><i class="none">שינוי קל בכל האזור</i></td><td><b>אובך או מזג אוויר</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 07 The café: two products roasted from the same nights -->
+    <section class="ch exp-cafe" id="ch-cafe">
+      <div class="exp-copy wide">
+        <p class="exp-num"><span dir="ltr">07</span>התפריט</p>
+        <h2>שני מוצרים, קלויים מאותם לילות</h2>
+        <p class="exp-lede">אותה מפה, אותם מקומות ואותם לילות. בוחרים אחד כדי להתחיל, ומחליפים ביניהם בכל רגע. מקש 1 או 2.</p>
+      </div>
+      <div class="launch-cols">
+        <!-- TEMPER: heat at night -->
+        <section class="launch-col" data-product="temper" aria-label="TEMPER">
+          <button class="launch-tile" data-product="temper" aria-keyshortcuts="1">
+            <i class="corner"></i><i class="corner"></i><i class="corner"></i><i class="corner"></i><kbd class="tile-key">מקש 1</kbd>
+            <img class="tile-emblem" src="brand/temper-emblem.png" alt=""><img class="tile-word" src="brand/temper-wordmark.png" alt="TEMPER">
+            <span class="tile-tag">חום · אש ולהבות גז</span>
+          </button>
+          <dl class="menu-notes">
+            <div><dt>תווים</dt><dd>להבות גז · שריפות · תעשייה</dd></div>
+            <div><dt>חליטה</dt><dd>אינפרא־אדום קצר, <span dir="ltr">M10 1.61 µm · M11 2.25 µm</span>, ותרמי <span dir="ltr">M15/M16</span></dd></div>
+            <div><dt>מוגש עם</dt><dd>איפה בוער, כמה חם, ומה נדלק או כבה מול הלילות הקודמים</dd></div>
+          </dl>
+          <div class="launch-range" data-product="temper"></div>
+        </section>
+        <!-- LIGHT ROAST: change in night lights -->
+        <section class="launch-col" data-product="lightroast" aria-label="LIGHT ROAST">
+          <button class="launch-tile" data-product="lightroast" aria-keyshortcuts="2">
+            <i class="corner"></i><i class="corner"></i><i class="corner"></i><i class="corner"></i><kbd class="tile-key">מקש 2</kbd>
+            <img class="tile-emblem" src="brand/lightroast-emblem.png" alt=""><img class="tile-word" src="brand/lightroast-wordmark.png" alt="LIGHT ROAST">
+            <span class="tile-tag">חשמל · שינויים באורות הלילה</span>
+          </button>
+          <dl class="menu-notes">
+            <div><dt>תווים</dt><dd>ערים · תשתיות · הפסקות חשמל</dd></div>
+            <div><dt>חליטה</dt><dd>ערוץ היום/לילה, <span dir="ltr">DNB · NASA Black Marble</span>, בלי ירח, ענן ואטמוספרה</dd></div>
+            <div><dt>מוגש עם</dt><dd>איפה האור נדלק, כבה, התבהר או התעמעם, ועד כמה זה נדיר שם</dd></div>
+          </dl>
+          <div class="launch-range" data-product="lightroast"></div>
+        </section>
+      </div>
+      <footer class="exp-foot">
+        <p><span dir="ltr">Imagery: NASA / NOAA · Suomi NPP · VIIRS.</span> התמונות והסרטון בפתיחה הם של NASA (Goddard Space Flight Center, Earth Observatory) ונשמרו במחשב הזה. המציג רץ בלי אינטרנט. VIIRS אינו מוצר של NASA או של NOAA.</p>
+      </footer>
+    </section>
+
+    <!-- the way on: Enter, and how far along -->
+    <button class="exp-hint" data-next><kbd dir="ltr">Enter ↵</kbd><span class="exp-hint-text">להמשך</span></button>
+    <div class="exp-progress" aria-hidden="true"><i></i></div>
+  </div>
+  <div class="intro-glow"></div>
+  <div class="intro-flash"></div>
+  <div class="intro-lockup">
+    <div class="intro-emblem-wrap"><img class="intro-emblem" src="brand/temper-emblem.png" alt=""><span class="intro-ring"></span><span class="intro-sparks"></span></div>
+    <div class="intro-word-wrap"><img class="intro-word" src="brand/temper-wordmark.png" alt=""><span class="intro-shine"></span></div>
+  </div>
+</div>
+<script src="intro.js"></script>
+
+<!-- One workspace in three parts: the list (what happened), the map (where) and the place (how it behaved over time).
+     Expert settings live behind the gear in the top bar. -->
+<header class="top">
+  <!-- A logo slot left of TEMPER: replace brand/logo-slot-2.svg
+       with a partner logo (shown 56 px high). -->
+  <div class="brand" id="brand"><img class="brand-slot" src="brand/logo-slot-2.svg" alt=""><img class="brand-emblem" src="brand/temper-emblem.png" alt="" data-only="temper"><img class="brand-word" src="brand/temper-wordmark.png" alt="TEMPER" data-only="temper"><img class="brand-emblem" src="brand/lightroast-emblem.png" alt="" data-only="lightroast"><img class="brand-word lr" src="brand/lightroast-wordmark.png" alt="LIGHT ROAST" data-only="lightroast"></div>
+  <nav class="nights" aria-label="לילה">
+    <button id="previousDay" class="icon" title="הלילה הקודם (→)" aria-label="הלילה הקודם">‹</button>
+    <select id="daySelect" aria-label="לילה"></select>
+    <button id="nextDay" class="icon" title="הלילה הבא (←)" aria-label="הלילה הבא">›</button>
+    <div id="dateStrip" class="strip"></div>
+    <span id="prepNote" class="prep" hidden title="השרת מכין את הלילות ברקע; מה שמוכן כבר זמין"></span>
+  </nav>
+  <div class="top-end">
+    <button id="countryButton" class="country-btn" title="החלפת מדינה"><span id="datasetName">—</span><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="products" role="tablist" aria-label="מוצר"><button id="productTemper" role="tab" aria-selected="true" class="active" title="אש ולהבות: M10/M11 (SWIR), M15">TEMPER</button><button id="productLight" role="tab" aria-selected="false" title="שינויים באורות הלילה: Black Marble (DNB)">LIGHT ROAST</button></div>
+    <!-- Simple hides what an expert tunes; Full shows everything (js/guide.js) -->
+    <span class="seg lang-seg top-lang" role="group" aria-label="שפה"><button data-lang-set="he" title="עברית">עב</button><button data-lang-set="en" title="English">EN</button></span>
+    <span class="seg ui-mode" id="uiMode" role="group" aria-label="תצוגה"><button data-ui="simple" title="פחות כפתורים: מה שצריך כדי להתחיל, וההצעות למה לעשות עכשיו. הכול עובד אותו דבר">פשוט</button><button data-ui="full" title="כל הכלים: מדדים, גודל חלון, תקופה, סקאלה ידנית, שאילתות">מלא</button></span>
+    <button id="helpButton" class="ghost icon-btn help-btn" title="מדריך: סיור קצר בכל מה שאפשר לעשות כאן" aria-label="מדריך">?</button>
+    <span class="more-wrap"><button id="settingsButton" class="ghost icon-btn" aria-expanded="false" aria-haspopup="true" title="הגדרות" aria-label="הגדרות"><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 5.6a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8Zm5.6 3.2.1-.8-.1-.8 1.4-1.1-1.4-2.4-1.7.6a5 5 0 0 0-1.4-.8L10.2 1.7H7.4l-.3 1.8a5 5 0 0 0-1.4.8L4 3.7 2.6 6.1 4 7.2l-.1.8.1.8-1.4 1.1L4 12.3l1.7-.6c.4.3.9.6 1.4.8l.3 1.8h2.8l.3-1.8c.5-.2 1-.5 1.4-.8l1.7.6 1.4-2.4Z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></button>
+      <!-- Settings: what an expert changes now and then. The lists and the map work without them. -->
+      <div id="settingsMenu" class="more-menu settings-menu" hidden role="dialog" aria-label="הגדרות">
+        <section>
+          <h4>מקומות וגרפים</h4>
+          <label class="switch"><input type="checkbox" id="sampleClip"><span>ממוצע המקום רק ממה שבתוך המדינה והשכבות</span></label>
+          <label class="switch"><input type="checkbox" id="marksToggle" checked><span>סימוני השינויים על המפה</span></label>
+        </section>
+        <section data-only="temper">
+          <h4>TEMPER</h4>
+          <label class="window-row" title="כמה לילות לפני הלילה המוצג משמשים להשוואה, וגם לזיהוי להבות מוכרות ברשימת הבוערים. ברירת המחדל נשמרת מראש לכל לילה; ערך אחר מחושב בכל פעם">השוואה מול<input id="changeWindow" type="number" min="7" max="60" step="1" value="14">לילות קודמים</label>
+          <label class="switch"><input type="checkbox" id="rawBands"><span>ערוצים גולמיים במקרא (M10, M11)</span></label>
+          <div class="display raw-only">
+            <label>צבעים<select id="palette"><option value="ember">גחלים</option><option value="gray">אפור</option></select></label>
+            <label>מינימום<input id="displayLow" type="number" value="0" step="any"></label>
+            <label>מקסימום<input id="displayHigh" type="number" value="100" step="any"></label>
+          </div>
+          <button id="applyDisplay" class="ghost full raw-only">החלת טווח התצוגה</button>
+        </section>
+        <section data-only="lightroast">
+          <h4>LIGHT ROAST</h4>
+          <span class="seg lr-method" role="group" aria-label="שיטה" hidden><button id="lrMethodWeekly" class="active" aria-pressed="true" title="השבוע שעד הלילה מול אותם לילות במחזורי המסלול הקודמים">שבועית</button><button id="lrMethodRx" aria-pressed="false" title="השיטה מ־VIIRS_algo: כיול SFAC, ואז RX של הלילה הבודד מול הלילות היציבים שלפניו. מחפש רק התבהרות">RX · VIIRS_algo</button></span>
+          <label class="lr-base" title="השבוע מול הלילות שלפניו. ברירת המחדל (החודשיים שקדמו) נשמרת מראש לכל לילה; תקופה אחרת מחושבת בכל פעם"><span id="lrBaseLabel">השבוע מול</span>
+            <select id="lrWindow"><option value="14">החודש שקדם</option><option value="28" selected>החודשיים שקדמו</option><option value="42">3 החודשים שקדמו</option><option value="56">4 החודשים שקדמו</option></select></label>
+        </section>
+        <section class="keys">
+          <h4>מקשים</h4>
+          <p><kbd>←</kbd> <kbd>→</kbd> לילה · <kbd>F</kbd> כל המפה · <kbd>Shift</kbd>+לחיצה או <kbd>A</kbd> מקום נוסף להשוואה · <kbd>Esc</kbd> ביטול</p>
+          <p>בגרף: גלגלת זום בזמן · <kbd>Shift</kbd>+גלגלת זום בערכים · גרירה הזזה · לחיצה כפולה הכל</p>
+        </section>
+      </div></span>
+    <!-- Partner logos: add <img src="..." alt="..."> elements here. -->
+    <div class="partners"></div>
+  </div>
+</header>
+
+<main>
+  <!-- The list: what happened, on the shown night or in a period up to it. A row shows its place on the map and over
+       time. The related-places search opens here too, in place of the list. -->
+  <aside class="panel list-panel" aria-label="רשימה">
+    <!-- Analytics (what happened, what burns, what is related), or the user's own analysis (named areas); the arrow
+         folds the panel to a strip -->
+    <div class="side-tabs" role="tablist">
+      <button id="sideList" role="tab" aria-selected="true" class="active" title="מה השתנה, מה בוער ומה קשור: ☆ בשורה מעביר מקום לניתוח האישי">אנליטיקות</button>
+      <button id="sideAreas" role="tab" aria-selected="false" title="אזורים שלכם, בשמות שלכם, לניתוח מסודר">ניתוח אישי<span id="areasCount" class="tab-count"></span></button>
+      <button id="sideSearch" role="tab" aria-selected="false" title="חיפוש מקומות לפי צורת השנה שלהם: מדרגה, תנודתיות, מגמה או קפיצות">חיפוש</button>
+      <button id="sidePoints" role="tab" aria-selected="false" title="שכבת נקודות מקובץ: לכל נקודה הגרף של השנה שלה, באור ובחום">נקודות<span id="pointsCount" class="tab-count"></span></button>
+      <button id="sideMin" class="side-fold" title="מזעור הפאנל" aria-label="מזעור הפאנל"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 8 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <button id="sideExpand" class="side-rail" title="פתיחת הפאנל" aria-label="פתיחת הפאנל"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2.5 4 6l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>אנליטיקות · ניתוח אישי · חיפוש</span></button>
+    <div class="list-view" id="findingsView">
+      <header class="list-head">
+        <div class="list-title"><h2 id="listTitle">מה השתנה הלילה</h2><span id="listStatus" class="state"></span><button id="listMarks" class="ghost icon-btn map-eye active" aria-pressed="true" title="הסתרת הסימונים מהמפה" aria-label="הסימונים על המפה"><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8s2.4-4.5 6.5-4.5S14.5 8 14.5 8 12.1 12.5 8 12.5 1.5 8 1.5 8Z" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="2" fill="none" stroke="currentColor" stroke-width="1.3"/><path class="eye-off" d="M2.5 13.5 13.5 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></button>
+          <span class="seg" id="tMode" role="group" aria-label="רשימה" data-only="temper"><button data-mode="changes" class="active" title="מה נדלק, כבה, התחזק או נחלש מול הלילות הקודמים">שינויים</button><button data-mode="hot" title="מוקדי החום של הלילה: לפידים, שריפות ותעשייה, עם הטמפרטורה">בוער</button></span></div>
+        <span class="seg period" id="evDays" role="group" aria-label="תקופה"><button data-days="1" class="active" title="מה נמצא בלילה המוצג">הלילה</button><button data-days="7" title="כל שינוי פעם אחת, ב־7 הימים שעד הלילה המוצג">7 ימים</button><button data-days="30" title="כל שינוי פעם אחת, ב־30 הימים שעד הלילה המוצג">30 יום</button><button data-days="0" title="כל שינוי פעם אחת, מתחילת הנתונים">הכל</button></span>
+        <p id="listContext" class="list-context"></p>
+        <div id="evFilters" class="ev-filters"><div id="evKinds" class="ev-chips" aria-label="סוג"></div><div id="evCauses" class="ev-chips" aria-label="סיבה"></div></div>
+      </header>
+      <div class="list-body">
+        <ol id="evList" class="ev-list"></ol>
+        <ol id="hotList" class="hot-list" hidden></ol>
+        <div id="evEmpty" class="empty"><span></span></div>
+      </div>
+      <footer class="list-foot" id="listFoot">
+        <span class="ev-actions"><button id="evCsv" class="ghost" title="השורות המוצגות, כטבלה">CSV</button><button id="evGeo" class="ghost" title="השורות המוצגות, לתוכנת GIS">GeoJSON</button></span>
+      </footer>
+    </div>
+    <!-- Related places: what moves with a chosen place, night by night, or against it -->
+    <div class="list-view" id="similarView" hidden>
+      <header class="list-head">
+        <button id="similarBack" class="link back">→ חזרה לרשימה</button>
+        <div class="list-title"><h2>מקומות קשורים</h2><span id="similarCount" class="state"></span><button id="similarNet" class="ghost net-open" title="רשת: המקום והמקומות הקשורים אליו, כל זוג ביניהם; כחול נעים יחד, אדום הפוך, גודל לפי מרכזיות. בלשונית נפרדת">רשת ↗</button></div>
+        <p id="simAnswer" class="sim-answer" hidden></p>
+        <p id="similarSeed" class="list-context"></p>
+        <p id="simRarity" class="sim-rarity" hidden></p>
+        <span class="seg" role="group" aria-label="מחפשים ב"><button id="simTargetTemper" title="מוקדי החום ש־TEMPER זיהה">ב־TEMPER</button><button id="simTargetLight" title="אזורים מוארים של 2.25 ק״מ">ב־LIGHT ROAST</button></span>
+        <label class="switch" id="simRegionalRow" title="כבוי: מנוכה גם השינוי האזורי של כל לילה (אובך, מזג אוויר, כ־30 ק״מ סביב), כך שנשאר מה שמקומי. דלוק: נשאר, לחיפוש אירועים רחבים כמו הפסקת חשמל גדולה"><input type="checkbox" id="simRegional"><span>כולל שינויים אזוריים</span></label>
+      </header>
+      <div class="list-body sim-lists">
+        <section class="sim-col" data-sign="pos"><h3><span id="simPosHead">נעים יחד</span><span id="simPosCount" class="chg-count"></span></h3><ol id="simPos"></ol></section>
+        <section class="sim-col" data-sign="neg"><h3><span id="simNegHead">נעים הפוך</span><span id="simNegCount" class="chg-count"></span></h3><ol id="simNeg"></ol></section>
+        <div id="similarEmpty" class="empty"><span></span></div>
+      </div>
+    </div>
+    <!-- The user's analysis: areas of their own, named, kept on this computer; each opens in the graphs and the
+         area analysis -->
+    <div class="list-view" id="areasView" hidden>
+      <header class="list-head">
+        <div class="list-title"><h2>ניתוח אישי</h2><span id="areasStatus" class="state"></span></div>
+        <p class="list-context">האזורים שלכם, בשמות שלכם, נשמרים במחשב הזה. לחיצה על אזור פותחת אותו בגרפים ובניתוח האזור, לצד האחרים (עד 4 יחד).</p>
+        <div class="areas-all"><button id="areasHideAll" class="link" title="כל האזורים יוצאים מהגרפים, ונשארים שמורים">הסתרת הכל מהגרפים</button><button id="areasDeleteAll" class="link del-all" title="מחיקת כל האזורים השמורים של המדינה הזו (לחיצה שנייה מאשרת)">מחיקת הכל</button></div>
+        <div class="areas-add"><button id="areaFromPlace" class="ghost" title="המקום שמוצג עכשיו בגרפים, בשם משלכם">☆ שמירת המקום</button><button id="areaDraw" class="ghost" title="לחיצה לכל נקודה במפה, Enter לסיום">ציור אזור</button></div>
+      </header>
+      <div class="list-body">
+        <ol id="areasList" class="areas-list"></ol>
+        <div id="areasEmpty" class="empty"><span>עוד אין אזורים. פתחו מקום על המפה ולחצו ☆ בגרף, או ציירו אזור.</span></div>
+      </div>
+      <footer class="list-foot">
+        <span id="areasNote" class="state"></span>
+        <span class="ev-actions"><button id="areasGeo" class="ghost" title="האזורים, לתוכנת GIS">GeoJSON</button></span>
+      </footer>
+    </div>
+    <!-- A layer of points (js/points.js): each with the behaviour of its year -->
+    <div class="list-view" id="pointsView" hidden>
+      <header class="list-head">
+        <div class="list-title"><h2>שכבת נקודות</h2><span id="pointsStatus" class="state"></span></div>
+        <p class="list-context">קובץ של נקודות: Shapefile (zip, או shp עם dbf ו־prj), GeoJSON, או CSV עם lat ו־lon. לכל נקודה הגרף של השנה שלה, באור ובחום, והצורה שלה. לחיצה: הנקודה בגרפים.</p>
+        <div class="areas-add points-tools"><button id="pointsImport" class="ghost" title="Shapefile, GeoJSON או CSV; הפוליגונים שבקובץ נכנסים לשכבות של המפה">ייבוא נקודות</button>
+          <label class="points-size" title="החלון סביב כל נקודה">חלון <select id="pointsSize"><option value="0.75">0.75 ק״מ</option><option value="2.25" selected>2.25 ק״מ</option><option value="3.75">3.75 ק״מ</option></select></label>
+          <select id="pointsSort" aria-label="סדר"><option value="file">כמו בקובץ</option><option value="light">השינוי הגדול באור</option><option value="heat">הכי הרבה לילות חום</option><option value="shape">לפי צורת השנה</option></select></div>
+        <div id="pointsShapes" class="ev-chips"></div>
+      </header>
+      <div class="list-body">
+        <ol id="pointsList" class="points-list"></ol>
+        <div id="pointsEmpty" class="empty"><span>עוד אין נקודות. ייבאו קובץ של נקודות.</span></div>
+      </div>
+      <footer class="list-foot">
+        <span class="ev-actions"><button id="pointsClear" class="link" title="הסרת כל הנקודות מהשכבה">ניקוי</button><button id="pointsCsv" class="ghost" title="לכל נקודה: צורת השנה באור ובחום, לילות חום וחציון האור">CSV</button></span>
+      </footer>
+    </div>
+    <!-- Search by behaviour: places by the shape of their year; the buttons write the SQL-like line, which can be
+         edited and run as it is -->
+    <div class="list-view" id="searchView" hidden>
+      <header class="list-head">
+        <div class="list-title"><h2>חיפוש לפי התנהגות</h2><span id="searchStatus" class="state"></span></div>
+        <p class="list-context">מקומות לפי צורת השנה שלהם. רוב המקומות יציבים ולא נכנסים לחיפוש; הקבוצות וההשוואות הן רק בין מה שנמצא.</p>
+        <!-- The time frame (js/search.js): the shapes worked out on its nights only, what is constant through it, and the
+             map without the constant lights (LIGHT ROAST) over it -->
+        <div class="q-frame" title="הצורות מחושבות רק על הלילות שבתקופה; גם מה שקבוע בה, והאורות הקבועים שאפשר להסתיר מהמפה"><span class="q-frame-label">תקופה</span><input type="date" id="qFrom" aria-label="מתאריך"><span class="q-frame-dash">–</span><input type="date" id="qTo" aria-label="עד תאריך"><button id="qFrameGraph" class="link" title="התקופה שבגרף">כמו בגרף</button><button id="qFrameAll" class="link" title="כל הלילות">הכל</button></div>
+        <div class="q-build">
+          <span class="seg" id="qShape" role="group" aria-label="צורה"><button data-v="step" title="שינוי אחד שנשאר: רמה אחת עד יום מסוים, רמה אחרת אחריו">מדרגה</button><button data-v="fluct" title="נדלק וכבה, או קופץ בין שתי רמות, שוב ושוב">תנודתי</button><button data-v="trend" title="עלייה או ירידה הדרגתית לאורך השנה">מגמה</button><button data-v="spike" title="יציב, חוץ מכמה לילות בודדים הרבה מעל">קפיצות</button><button data-v="constant" data-only="temper" title="מקומות שבערו ברוב הלילות של התקופה: לפידים ומתקנים שבוערים כל הזמן">חם קבוע</button><button data-v="constant" data-only="lightroast" title="מקומות מוארים כמעט בכל לילה בהיר של התקופה: ערים, כבישים, מתקנים שתמיד שם">בהיר קבוע</button></span>
+          <span class="seg" id="qDir" role="group" aria-label="כיוון"><button data-v="">כל כיוון</button><button data-v="up">עלייה</button><button data-v="down">ירידה</button></span>
+          <label class="tool"><span id="qChangeLabel">פי לפחות</span><select id="qChange"><option value="">—</option><option value="1.5">1.5</option><option value="2" selected>2</option><option value="3">3</option><option value="5">5</option></select></label>
+          <label class="tool">מתי<select id="qWhen"><option value="">כל השנה</option><option value="30">30 הימים האחרונים</option><option value="90">90 הימים האחרונים</option><option value="graph">התקופה שבגרף</option></select></label>
+          <label class="tool">איפה<select id="qWithin"><option value="country">כל המדינה</option><option value="view">מה שבמפה עכשיו</option></select></label>
+        </div>
+        <textarea id="queryText" class="query" dir="ltr" rows="2" spellcheck="false" aria-label="שאילתה" title="שדות: shape, direction, change, when, level, switches, fit, within · AND · IN (...) · BETWEEN a AND b · ORDER BY שדה DESC · LIMIT n · Enter: חיפוש"></textarea>
+        <div class="q-actions"><button id="queryRun" class="ghost q-run">חיפוש</button>
+          <select id="queryExamples" aria-label="דוגמאות"><option value="">דוגמאות…</option>
+            <option value="shape = step AND direction = down AND change >= 2">מדרגות ירידה, פי 2 לפחות</option>
+            <option value="shape = step AND direction = up AND change >= 3">מדרגות עלייה, פי 3 לפחות (אזור חדש שנדלק)</option>
+            <option value="shape = fluct ORDER BY switches DESC">נדלק וכבה: הכי הרבה מעברים</option>
+            <option value="shape = trend AND direction = down ORDER BY fit DESC">ירידה הדרגתית לאורך השנה</option>
+            <option value="shape = spike AND level >= 10">קפיצות חד־פעמיות במקומות מוארים</option>
+            <option value="shape IN (step, trend, fluct) AND within = view">כל מה שמשתנה, במה שבמפה עכשיו</option>
+          </select></div>
+      </header>
+      <div class="list-body">
+        <div id="searchGroups" class="search-groups"></div>
+        <ol id="searchList" class="ev-list"></ol>
+        <div id="searchEmpty" class="empty"><span>בחרו צורה, או כתבו שאילתה, ולחצו חיפוש</span></div>
+      </div>
+      <footer class="list-foot">
+        <span id="searchNote" class="state"></span>
+        <span class="ev-actions"><button id="searchCsv" class="ghost" title="התוצאות המוצגות, כטבלה">CSV</button><button id="searchGeo" class="ghost" title="התוצאות המוצגות, לתוכנת GIS">GeoJSON</button></span>
+      </footer>
+    </div>
+  </aside>
+
+  <section class="stage no-place">
+    <div class="map" id="mapWrap">
+      <canvas id="mapCanvas" aria-label="תמונת הלילה על מפת רקע"></canvas>
+      <div id="mapLoading" class="loading" hidden><span class="spinner"></span><small id="mapLoadingText"></small></div>
+      <div id="mapHint" class="hint" hidden></div>
+      <!-- Coordinates (js/coords.js): the pointer, or the map's centre, in the system chosen; a search that takes any of
+           them pins the point -->
+      <div class="coord-box" id="coordBox">
+        <div class="coord-sys" id="coordSys" role="group" aria-label="מערכת קואורדינטות"><button data-sys="geo" title="קו רוחב, קו אורך, במעלות עשרוניות (WGS84)">GEO</button><button data-sys="dms" title="מעלות, דקות ושניות (WGS84)">DMS</button><button data-sys="utm" title="UTM: אזור ורצועת רוחב, מזרח וצפון במטרים (WGS84)">UTM</button><button data-sys="mgrs" title="MGRS: אזור UTM, ריבוע של 100 ק״מ, מזרח וצפון במטרים">MGRS</button><button data-sys="itm" title="רשת ישראל החדשה (ITM, EPSG:2039), במטרים; רק סביב ישראל">ITM</button><button data-sys="grid" title="הרשת של הנתונים ושל קובצי ה־GeoTIFF: EPSG:6933, במטרים">GRID</button></div>
+        <div class="coord-read"><button id="coordLive" class="coord-live" dir="ltr" title="לחיצה: העתקה">—</button><small id="coordWhat" class="coord-what">מרכז המפה</small></div>
+        <form id="coordFind" class="coord-find" role="search"><input id="coordInput" dir="ltr" autocomplete="off" spellcheck="false" aria-label="חיפוש קואורדינטות" title="קואורדינטות בכל אחת מהמערכות: GEO, מעלות־דקות־שניות, UTM, MGRS, ITM או הרשת. Enter: המפה עוברת לשם"><button title="מעבר לנקודה" aria-label="מעבר לנקודה"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><circle cx="6" cy="6" r="4.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9.2 9.2 12.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></form>
+        <div id="coordHit" class="coord-hit" hidden></div>
+      </div>
+      <div class="zoom">
+        <button id="zoomIn" title="הגדלה" aria-label="הגדלה">+</button>
+        <button id="zoomOut" title="הקטנה" aria-label="הקטנה">−</button>
+        <button id="fitMap" title="כל המפה (F)" aria-label="כל המפה"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1.5 5V1.5H5M9 1.5h3.5V5M12.5 9v3.5H9M5 12.5H1.5V9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <!-- On the map itself: what is shown (only inside the country) and the layers -->
+      <div class="map-tools">
+        <button id="focusDraw" class="map-btn" aria-pressed="false" title="ציור אזור, מתן שם, ועבודה רק בתוכו: המפה, השינויים, מוקדי החום, החיפוש וההורדה"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5.2" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="7" cy="7" r="2" fill="currentColor"/></svg>אזור לניתוח</button>
+        <label class="map-switch" title="מסתיר את מה שמחוץ לגבול המדינה (ולשכבות שהוספתם). ממוצעי המקומות לא משתנים: לזה יש הגדרה ב־⚙"><input type="checkbox" id="clipDisplay"><span>רק בתוך המדינה</span></label>
+        <span class="more-wrap"><button id="layersButton" class="map-btn" aria-expanded="false" aria-haspopup="true" title="מפת רקע, גבולות, אתרי להבות ופוליגונים משלכם"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1.5 12.5 4.5 7 7.5 1.5 4.5ZM1.5 7.2 7 10.2l5.5-3M1.5 9.9 7 12.9l5.5-3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>שכבות</button>
+          <div id="layersMenu" class="more-menu layers-menu" hidden>
+            <div id="polygonList" class="layers"></div>
+            <div class="layers-actions"><button id="importButton" class="link" title="Shapefile (zip, או shp עם dbf ו־prj), GeoJSON או CSV: פוליגונים לשכבות, נקודות לשכבת הנקודות">ייבוא קובץ</button><button id="drawButton" class="link" title="לחיצה לכל נקודה, Enter לסיום">ציור פוליגון</button></div>
+            <input type="file" id="vectorFile" multiple accept=".zip,.shp,.dbf,.prj,.cpg,.shx,.geojson,.json,.csv,.txt" hidden>
+          </div></span>
+      </div>
+      <div id="focusBar" class="focus-bar" role="region" aria-label="עבודה בתוך אזור" hidden><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5.2" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="7" cy="7" r="2" fill="currentColor"/></svg><b id="focusName"></b><span id="focusStats"></span><button id="focusFit" class="link" title="התאמת המפה לאזור">התאמה</button><button id="focusExport" class="link" title="GeoTIFF של האזור בלבד: חתוך למלבן שלו, ומחוץ לו NaN">GeoTIFF</button><button id="focusExit" class="focus-exit" title="חזרה לכל המדינה (Esc)" aria-label="חזרה לכל המדינה">✕</button></div>
+      <button id="exportButton" class="map-btn export-corner" title="הורדת הלילה כ־GeoTIFF: התמונה המחוברת של כל המעברים, על המלבן שמסביב למדינה" aria-label="הורדת הלילה כ־GeoTIFF"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8M4.8 7 8 10.2 11.2 7M2.5 11.5v2h11v-2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>GeoTIFF</button>
+      <div class="readout">
+        <div class="scale" id="mapScale"></div>
+        <div class="pixel" id="pixelRow" hidden><div><b id="pixelValue">—</b><span id="pixelCelsius"></span><small id="pixelLabel"></small></div><span id="pixelRaw"></span></div>
+        <span class="read-foot"><span id="sourceBadge"></span></span>
+      </div>
+      <div class="legend">
+        <!-- What the marks on the map mean: only those shown now (js/map.js: renderMarksKey) -->
+        <div id="marksKey" class="marks-key" hidden></div>
+        <div id="colorRamp" class="ramp temperature"></div>
+        <div class="legend-row"><span id="legendLow">1000 K</span><span class="seg band" role="group" aria-label="תצוגת אורות" data-only="lightroast"><button id="lrViewLights" class="active" title="קרינת אורות הלילה, סקאלה לוגריתמית קבועה 0.5–100 nW (מתחת לזה רצפת הרעש של החיישן)">אורות</button><button id="lrViewChange" title="השבוע שעד הלילה מול הרגיל: זהב התבהר, כחול התעמעם; חוזק הצבע לפי המובהקות">שינוי</button><button id="lrViewTypical" title="האורות הרגילים: החציון של כל פיקסל לאורך השנה. כדי לראות אם שינוי קרה במקום שבדרך כלל חשוך">רגיל</button></span><span class="seg band" role="group" aria-label="ערוץ" data-only="temper"><button id="bandCombo" class="active" title="משולב M10+M11 אחרי התיקונים: בהירות = כמה הפיקסל מעל הרעש של הלילה בזווית שלו (שני הערוצים יחד); צבע = טמפ׳ מקור כשהאות חזק בשני הערוצים">משולב</button><button id="bandM10" class="raw-band" title="M10 · 1.61 µm, קרינה גולמית">M10</button><button id="bandM11" class="raw-band" title="M11 · 2.25 µm, קרינה גולמית">M11</button><button id="bandM15" title="M15 · 10.8 µm, טמפ׳ בהירות, ‎-40 עד 45 °C: קרקע חמה כהה, ראשי עננים קרים בהירים. כחול = סומן כענן">תרמי</button></span><span id="legendHigh">2600 K</span></div>
+        <!-- Without the constant lights (js/map.js, server.py steady_png): what is always lit dims, so what is not stands out -->
+        <label class="switch steady-switch" data-only="lightroast" title="מה שמואר כמעט בכל לילה בהיר של התקופה (בחיפוש; בלי תקופה, כל הלילות) מתעמעם, כדי שמה שלא תמיד שם יבלוט: אור חדש, אור שבא והולך, שריפות. מקום קבוע שהלילה רחוק פי 2 מהרגיל שלו נשאר, כך שגם הפסקת חשמל בעיר נראית"><input type="checkbox" id="steadyHide"><span>בלי האורות הקבועים</span></label>
+        <!-- The night, or the period ending with it (js/map.js: the period on the map) -->
+        <div class="legend-period"><span class="seg band" id="periodSeg" role="group" aria-label="תקופה"><button data-days="1" title="הלילה המוצג">לילה</button><button data-days="7" title="השבוע של הלילה המוצג, שני עד ראשון">שבוע</button><button data-days="16" title="מחזור 16 הימים של הלילה המוצג: מחזור מסלול אחד של הלוויין, כל זווית צילום פעם אחת">16 יום</button><button data-days="30" title="החודש של הלילה המוצג">חודש</button><button data-days="365" title="השנה של הלילה המוצג">שנה</button></span></div>
+        <div class="legend-cloud" data-only="lightroast"><svg width="24" height="14" viewBox="0 0 24 14" aria-hidden="true"><path d="M6 13.5a4.5 4.5 0 0 1-.6-9A5.5 5.5 0 0 1 15.8 3a4.2 4.2 0 0 1 2.7 2.1A4.2 4.2 0 1 1 19 13.5Z"/></svg>ענן: אין תצפית בלילה הזה</div>
+      </div>
+      <div id="popBar" class="map-tip pop-bar" hidden>הגרפים פתוחים בחלון נפרד<button id="popBack" class="link">החזרה לכאן</button></div>
+      <div id="mapTip" class="map-tip">לחיצה על המפה, על שורה או על סימון: המקום לאורך זמן · <kbd>Shift</kbd>+לחיצה או <kbd>A</kbd>: עוד מקום להשוואה</div>
+      <!-- Where to start, on the empty map in Simple, in place of the line above (js/guide.js) -->
+      <div id="startCard" class="start-card" role="region" aria-label="מאיפה מתחילים">
+        <div class="start-head"><b>מאיפה מתחילים?</b><button id="startClose" class="coord-clear" title="לא להציג שוב" aria-label="סגירה">×</button></div>
+        <div class="start-acts">
+          <button id="startStrongest" class="start-act"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5 12.2 7l5 .7-3.6 3.5.9 5L10 13.8 5.5 16.2l.9-5L2.8 7.7l5-.7Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg><span><b>השינוי הבולט של הלילה</b><small>השורה הראשונה ברשימה, על המפה ובגרף</small></span></button>
+          <button id="startCoords" class="start-act"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="5.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10 1.5v4M10 14.5v4M1.5 10h4M14.5 10h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span><b>מקום לפי קואורדינטות</b><small>GEO, UTM, MGRS או ITM, בפינה למעלה</small></span></button>
+          <button id="startTour" class="start-act"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8.3 7.2 13 10l-4.7 2.8Z" fill="currentColor"/></svg><span><b>סיור של דקה</b><small>כל חלק במסך, ולמה הוא שם</small></span></button>
+        </div>
+        <p class="start-foot">או לחצו על כל מקום במפה: השנה שלו נפתחת בגרף, באור ובחום.</p>
+      </div>
+      <div id="mapMenu" class="menu" role="menu" hidden>
+        <button id="menuCopy" role="menuitem"><span>העתקת קואורדינטות</span><small id="menuCoords" dir="ltr"></small></button>
+        <button id="menuWindow" role="menuitem"><span>להוסיף את המקום להשוואה</span><small>לצד המקומות שכבר פתוחים</small></button>
+        <button id="menuSimilar" role="menuitem"><span>מקומות קשורים</span><small>מה זז יחד עם המקום הזה</small></button>
+      </div>
+      <span id="mapTitle" class="sr-only"></span>
+    </div>
+
+    <!-- The place: each open place over time, in both products, and what its light and heat do together -->
+    <div class="series" id="seriesPanel">
+      <!-- In the graph's own window only: how to read it -->
+      <div id="chartGuide" class="chart-guide" hidden><b>איך לקרוא</b><span>למעלה TEMPER · חום, למטה LIGHT ROAST · חשמל, כל אחד בסקאלה שלו.</span><span>כל קו הוא מקום, במספר ובצבע שלו כמו על המפה.</span><span>רצועה מוצללת: הלילות של השינוי · קו מקווקו: צורת השנה · עיגול חלול: לילה שנמדד רק בחלקו · קו אנכי: הלילה שעל המפה.</span><span>החלון עוקב אחרי המציג: מקום שנפתח שם מופיע כאן; לחיצה כאן על לילה מעבירה אליו את המפה.</span><button id="chartGuideClose" class="link" title="הסתרה">×</button></div>
+      <div id="seriesResize" class="series-resize" role="separator" aria-orientation="horizontal" aria-label="גובה הגרף" tabindex="0" title="גרירה: גובה הגרף · לחיצה כפולה: ברירת מחדל"></div>
+      <div class="series-head">
+        <div class="place-head"><h2 class="place-title" title="בגרף: גלגלת זום בזמן · Shift+גלגלת זום בערכים · גרירה הזזה · לחיצה כפולה הכל · לחיצה: הלילה הזה במפה">לאורך זמן</h2>
+          <!-- The values axis (js/chart.js: chartMode): fixed, fitted to the period shown, or each place against its own median -->
+          <span class="seg chart-mode" id="chartMode" role="group" aria-label="סקאלת הערכים"><button data-mode="fixed" title="סקאלה קבועה: מ־0 (או כפי שהוגדלה ב־Shift+גלגלת), אותה סקאלה בכל תקופה">קבועה</button><button data-mode="view" title="לפי מה שבגרף: הסקאלה מתאימה את עצמה לתקופה המוצגת, כך ששינוי קטן ממלא את הגובה כשמגדילים בזמן. קפיצה נדירה נעצרת בקצה עם חץ">לפי התצוגה</button><button data-mode="change" title="כל מקום מול החציון שלו בתקופה המוצגת: באחוזים לקרינה, כהפרש לממוצע המתוקן ולטמפרטורה. מקומות בהירים וחשוכים על ציר אחד">שינוי</button><button data-mode="noise" title="כל מקום מול הרגיל שלו, ביחידות של הרעש שלו מלילה ללילה. רצועת הרעש (±2) מכווצת לפס אפור, וכל השאר מקבל את הגובה: תנודות רגילות נשארות שטוחות, ושינוי אמיתי בולט. גם מקום חשוך וגם מקום בהיר">רעש</button></span><select id="chartRef" class="chart-ref" hidden aria-label="מול מה" title="כל מקום מול עצמו, או כל המקומות מול מקום אחד לילה לילה: מה שזז בשניהם יחד (אובך, ירח, שינוי אזורי) מתבטל, ונשאר רק מה שהמקום עשה אחרת"></select>
+          <button id="shapeToggle" class="ghost shape-toggle" aria-pressed="true" title="קו מקווקו על כל מקום: הצורה שנמצאה לו (מדרגה, מגמה, תנודתי, קפיצות), מותאמת לערכים שבגרף. מהחיפוש לפי התנהגות, או מניתוח האזור"><svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M1 9h5V3h9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2.5 2"/></svg>צורה</button>
+          <button id="paletteButton" class="ghost shape-toggle" title="צבעי הקווים: פלטה לכל המקומות (קשת, ניאון ועוד). צבע של מקום אחד: לחיצה על הנקודה בשבב שלו" aria-label="צבעי הקווים"><span class="pal-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span>צבעים</button></div>
+        <div class="series-tools" id="seriesTools">
+          <label class="tool" title="גודל החלון סביב המקום המוצג, וגם של המקום הבא שתבחרו על המפה">חלון<select id="windowSize"><option value="0.75">פיקסל</option><option value="1.5">1.5 ק״מ</option><option value="2.25">2.25 ק״מ</option><option value="3">3 ק״מ</option><option value="4.5">4.5 ק״מ</option><option value="7.5">7.5 ק״מ</option><option value="15" selected>15 ק״מ</option><option value="30">30 ק״מ</option><option value="60">60 ק״מ</option><option value="99.75">100 ק״מ</option></select></label>
+          <button id="compareToggle" class="ghost both" aria-pressed="false" title="שני הגרפים זה מעל זה, לאותם מקומות ועל אותו ציר זמן: TEMPER בכתום, LIGHT ROAST בכחול"><i class="t"></i><i class="l"></i>שני הגרפים</button>
+          <span class="seg metric-t" role="group" aria-label="מדד TEMPER"><i class="seg-dot t" title="TEMPER · חום" aria-hidden="true"></i><button id="metricCorrected" class="active" title="ממוצע החלון פחות רצפת הרעש של הלילה לפי זווית התצפית: מקום בלי מקור יוצא קרוב ל־0">מתוקן</button><button id="metricRaw" title="ממוצע החלון כפי שנמדד">גולמי</button><button id="metricTemp" title="טמפרטורת המקור מיחס M10/M11, בלילות שבהם בחלון מקור מאומת וחזק בשני הערוצים">טמפ׳</button></span>
+          <span class="seg metric-l" role="group" aria-label="מדד LIGHT ROAST"><i class="seg-dot l" title="LIGHT ROAST · חשמל" aria-hidden="true"></i><button id="lrMetricWeekly" class="active" title="חציון הלילות הנקיים מבין 7 הלילות שעד הלילה, לפחות 3 (לילה בודד רועש: כ־±50% בין לילות). רק בלילות שנצפו: לילה מעונן מסומן בקו קטן בתחתית">שבועי</button><button id="lrMetricNightly" title="ממוצע החלון בכל לילה">לילי</button></span>
+          <span class="tool-sep"></span>
+          <label class="tool">מ־<input id="rangeFrom" type="date"></label>
+          <label class="tool">עד<input id="rangeTo" type="date"></label>
+          <button id="rangeAll" class="link">הכל</button>
+          <span class="more-wrap"><button id="chartMore" class="ghost icon-btn" aria-expanded="false" aria-haspopup="true" title="סקאלה וייצוא" aria-label="סקאלה וייצוא">⋯</button>
+            <div id="chartMoreMenu" class="more-menu" hidden>
+              <div class="more-row"><label class="tool">מינ׳<input id="chartLow" type="number" step="any" placeholder="אוטו׳"></label><label class="tool">מקס׳<input id="chartHigh" type="number" step="any" placeholder="אוטו׳"></label><button id="chartFit" class="ghost" title="התאמת הסקאלה למקומות שבתקופה">התאמה</button></div>
+              <button id="exportCsv" class="ghost" disabled title="כל המקומות, בתקופה שנבחרה">ייצוא CSV</button>
+            </div></span>
+          <button id="chartPop" class="ghost icon-btn" title="הגרף בחלון קטן משלו, שאפשר להזיז (מתעדכן עם הדף)" aria-label="הגרף בחלון נפרד"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 1.5h4.5V6M12.5 1.5 6.5 7.5M5.5 2.5h-3v9h9v-3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button id="chartMax" class="ghost icon-btn" aria-pressed="false" title="הגרף על כל השטח" aria-label="הגדלת הגרף"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M1.5 5V1.5H5M9 1.5h3.5V5M12.5 9v3.5H9M5 12.5H1.5V9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button id="chartMin" class="ghost icon-btn" aria-pressed="false" title="מזעור: רק שורת הערכים" aria-label="מזעור הגרף"><svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 10.5h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <button id="placeClose" class="ghost clear-all" title="הסרת כל המקומות מהגרפים (האזורים האישיים נשארים שמורים)">הסרת הכל ×</button>
+        </div>
+      </div>
+      <div id="seriesLegend" class="series-legend"></div>
+      <div id="nextSteps" class="next-steps" hidden></div>
+      <div class="chart-row" id="chartRow">
+        <div class="chart" id="chartWrap">
+          <canvas id="seriesCanvas" aria-label="ממוצע כל מקום, לילה אחר לילה"></canvas>
+          <span id="seriesUnits" class="chart-units" dir="ltr">W m⁻² µm⁻¹ sr⁻¹</span>
+          <div id="chartEmpty" class="empty"><span>לחצו על המפה או על שורה ברשימה</span></div>
+        </div>
+        <!-- Area analysis of the place shown (the last opened, or the one hovered or pinned): light against heat
+             inside it, and the places related to its lights and to its heat -->
+        <aside id="areaCard" class="area-card" hidden aria-live="polite"></aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="toast" role="status" class="toast" hidden></div>
+<!-- The places' colours: a palette for all, or a place's own (js/places.js) -->
+<div id="palettePop" class="pop-menu" hidden><div id="paletteList"></div><small>צבע של מקום אחד: הנקודה בשבב שלו</small></div>
+<div id="swatchPop" class="pop-menu swatch-pop" hidden></div>
+<!-- A sticky note for a place kept in the graphs (js/places.js: editNote) -->
+
+<!-- A night as a GeoTIFF (js/export.js; server: /api/export) -->
+<!-- The math page (js/math.js): a secret, three clicks on the product's emblem; a short paper in LaTeX -->
+<dialog id="mathDialog" class="math-dlg" aria-labelledby="mathTitle">
+  <header class="math-head"><h2 id="mathTitle">המתמטיקה של המציג</h2><span class="math-sub">מה מחושב, בנוסחאות, ומה אפשר לשנות</span><button id="mathTex" class="math-texbtn" title="שמירת המאמר כמסמך LaTeX (XeLaTeX)" dir="ltr">.tex ↓</button><button id="mathClose" class="icon" aria-label="סגירה">×</button></header>
+  <div class="math-grid"><nav id="mathNav" class="math-nav"></nav><div id="mathBody" class="math-body"></div></div>
+</dialog>
+<dialog id="exportDialog" class="export-dlg">
+  <div class="dlg-head"><h2>הורדת הלילה כ־GeoTIFF</h2><button id="exportClose" class="icon" aria-label="סגירה">×</button></div>
+  <p class="ex-lede">התמונה המחוברת של הלילה, מכל המעברים של הלוויין, על המלבן שמסביב למדינה, כפי שהמציג קורא אותה. לא קובצי המעבר הגולמיים. ערכים במספרים ממשיים (float32), בלי נתונים = NaN. בתקופה: ההרכב שלה, כמו במפה (ב־TEMPER הלילה החזק של כל פיקסל, ב־LIGHT ROAST החציון של הלילות הבהירים).</p>
+  <div class="ex-rows">
+    <div class="ex-row"><span class="ex-label">מוצר</span><span class="seg" id="exProduct"><button data-p="temper">TEMPER · חום</button><button data-p="lightroast">LIGHT ROAST · חשמל</button></span></div>
+    <div class="ex-row"><span class="ex-label">תקופה</span><span class="seg" id="exPeriod"><button data-days="1" title="הלילה עצמו: כל שכבות הלילה">לילה</button><button data-days="7" title="השבוע של הלילה, שני עד ראשון">שבוע</button><button data-days="16" title="מחזור 16 הימים של הלילה: כל זווית צילום פעם אחת">16 יום</button><button data-days="30" title="החודש של הלילה">חודש</button><button data-days="365" title="השנה של הלילה">שנה</button></span></div>
+    <div class="ex-row"><span class="ex-label" id="exDateLabel">לילה</span><select id="exDate" aria-label="לילה"></select><small id="exPeriodName" class="ex-period-name"></small></div>
+    <div class="ex-row"><span class="ex-label">היטל</span><span class="seg" id="exCrs"><button data-c="native" class="active" title="הרשת של הנתונים: Equal Area, תאים של 750 מ׳ בדיוק, בלי דגימה מחדש">EPSG:6933 · 750 מ׳</button><button data-c="wgs84" title="קו רוחב וקו אורך; כל תא לוקח את הערך של התא הקרוב (בלי ערכים מומצאים)">WGS84 · מעלות</button></span></div>
+    <div class="ex-row" id="exClipRow" hidden><span class="ex-label">אזור</span><label class="ex-clip"><input type="checkbox" id="exClip" checked><span>רק <b id="exClipName"></b>: חתוך למלבן שלו, ומחוץ לו NaN</span></label></div>
+    <div class="ex-row top"><span class="ex-label">שכבות</span><div id="exLayers" class="ex-layers"></div></div>
+  </div>
+  <p id="exError" class="error"></p>
+  <div class="ex-foot"><small id="exSize"></small><button id="exGo" class="primary">הורדה</button></div>
+</dialog>
+
+<dialog id="countryDialog" class="countries">
+  <div class="dlg-head"><h2>בחירת מדינה</h2><button id="countryClose" class="icon" aria-label="סגירה">×</button></div>
+  <div id="countryGrid" class="country-grid"></div>
+  <div id="countryError" class="error"></div>
+</dialog>
+
+<script src="js/core.js"></script>
+<script src="js/map.js"></script>
+<script src="js/geo.js"></script>
+<script src="js/coords.js"></script>
+<script src="js/places.js"></script>
+<script src="js/list.js"></script>
+<script src="js/related.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/search.js"></script>
+<script src="js/areas.js"></script>
+<script src="js/focus.js"></script>
+<script src="js/points.js"></script>
+<script src="js/math.js"></script>
+<script src="js/export.js"></script>
+<script src="js/guide.js"></script>
+<script src="js/main.js"></script>
+<script src="help.js"></script>
+</body>
+</html>

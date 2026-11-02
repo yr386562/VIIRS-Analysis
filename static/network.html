@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>רשת מקומות קשורים · VIIRS</title><link rel="icon" href="brand/viirs-icon-small.png"><link rel="stylesheet" href="app.css"><script src="i18n-en.js"></script><script src="i18n.js"></script></head>
+<!-- The network of related places, in its own tab (js/network.js; opened from related places, ↗ רשת): the place and the
+     places that move with it or against it, every pair correlated; blue edges move together, red ones the opposite way,
+     node size is eigenvector centrality. A click on a node opens that place in the viewer's graphs. -->
+<body class="net-page" data-product="lightroast">
+<header class="net-bar">
+  <div class="net-title"><b>רשת מקומות קשורים</b><span id="netSeed" data-i18n-skip></span></div>
+  <div class="net-controls">
+    <span class="seg" id="netProduct" role="group" aria-label="מוצר"><button data-p="lightroast">אור · LIGHT ROAST</button><button data-p="temper">חום · TEMPER</button></span>
+    <span class="seg" id="netSign" role="group" aria-label="מה מחפשים"><button data-s="both" title="מקומות שנעים יחד עם המקום ומקומות שנעים הפוך">יחד והפוך</button><button data-s="positive" title="רק מקומות שעולים ויורדים יחד עם המקום">רק יחד</button><button data-s="negative" title="רק מקומות שעולים כשהמקום יורד, ולהפך">רק הפוך</button></span>
+    <label class="net-field">מקומות <select id="netNodes"><option>15</option><option selected>25</option><option>40</option><option>60</option></select></label>
+    <label class="net-field" title="קשר נכנס לרשת רק מעל הסף הזה, וגם מעל 4/√n">|r| לפחות <input type="range" id="netMinR" min="0.3" max="0.9" step="0.05" value="0.3"><output id="netMinROut" dir="ltr">0.30</output></label>
+    <label class="net-check" title="משאיר בסדרות את השינוי שמשותף לאזור (כ־30 ק״מ): מוצא גם אירועים רחבים, כמו הפסקת חשמל גדולה או אובך"><input type="checkbox" id="netRegional"> כולל שינויים אזוריים</label>
+    <span class="seg" id="netLayout" role="group" aria-label="סידור"><button data-l="force" title="מקומות קשורים זה לזה קרובים">לפי הקשרים</button><button data-l="map" title="כל מקום במקום שלו על המפה">לפי המפה</button></span>
+    <span class="seg lang-seg" role="group" aria-label="שפה"><button data-lang-set="he" title="עברית">עב</button><button data-lang-set="en" title="English">EN</button></span>
+  </div>
+</header>
+<div class="net-main">
+  <div class="net-stage">
+    <canvas id="netCanvas"></canvas>
+    <div id="netTip" class="net-tip" hidden></div>
+    <div id="netStatus" class="net-status"></div>
+    <div class="net-legend"><span><i class="pos"></i>נעים יחד (r &gt; 0)</span><span><i class="neg"></i>נעים הפוך (r &lt; 0)</span><span><i class="size"></i>גודל: מרכזיות וקטור עצמי</span><span><i class="ring"></i>המקום שממנו התחלתם</span></div>
+  </div>
+  <aside class="net-side">
+    <details id="netHowto" class="net-howto" open><summary>איך לקרוא את הרשת</summary><ul>
+      <li>כל עיגול הוא מקום; ★ המקום שממנו התחלתם. המספר: הדירוג לפי מרכזיות.</li>
+      <li>קו כחול: שני מקומות שעולים ויורדים יחד (r חיובי). קו אדום: כשאחד עולה השני יורד (r שלילי). עבה ובהיר יותר: קשר חזק יותר.</li>
+      <li>גודל העיגול: מרכזיות וקטור עצמי. מקום גדול קשור למקומות שהם עצמם קשורים: לב הקבוצה.</li>
+      <li>גוש כחול צפוף: מקומות שמשתנים יחד, כנראה סיפור אחד (אתר וסביבתו, או אירוע אזורי). עיגול אדום: מקום שמגיב הפוך.</li>
+      <li>לפי המפה: אותם מקומות במקום שלהם, כדי לראות אם הקשר קרוב או רחוק.</li>
+      <li>למעלה בוחרים מה מחפשים: מוצר, יחד או הפוך, כמה מקומות, וחוזק מינימלי. לחיצה על מקום פותחת אותו בגרפים של המציג.</li>
+    </ul></details>
+    <h3>הכי מרכזיים</h3>
+    <ol id="netList"></ol>
+    <p class="net-method" id="netMethod">כל קשת היא מתאם פירסון בין שני מקומות, על הלילות ששניהם נמדדו, אחרי שמנכים את מה שמשותף לכל המדינה, את מחזור הצילום ואת הירח. מרכזיות וקטור עצמי: מקום מרכזי כשהוא קשור למקומות שהם עצמם מרכזיים. לחיצה על מקום פותחת אותו בגרפים.</p>
+  </aside>
+</div>
+<script src="js/network.js"></script>
+</body>
+</html>

@@ -63,8 +63,10 @@ ALLOWED_HOSTS = {h.strip().lower() for h in os.environ.get("TEMPER_ALLOWED_HOSTS
 LOCAL_ONLY = True   # set in main(): false when listening beyond the loopback address
 BASEMAP = STATIC / "basemap" / "ne_110m_admin_0_countries.geojson"   # bundled, so the background map needs no network
 CONFIG = ROOT / "config.json"   # {"data_root": ...}: the folder whose country subfolders the picker shows
-DEFAULT_ROOT = Path.home() / "Desktop" / "ARD" / "VIIRS_NIGHT_SWIR"   # without config.json or TEMPER_DATA_ROOT
-DEFAULT_LR_ROOT = Path.home() / "Desktop" / "ARD" / "VIIRS_NIGHT_DNB"   # LIGHT ROAST (Black Marble night lights)
+# Without config.json or TEMPER_DATA_ROOT. expanduser, not Path.home(): it never raises without a home folder (the
+# standalone's self-test runs with a bare environment).
+DEFAULT_ROOT = Path(os.path.expanduser("~")) / "Desktop" / "ARD" / "VIIRS_NIGHT_SWIR"
+DEFAULT_LR_ROOT = Path(os.path.expanduser("~")) / "Desktop" / "ARD" / "VIIRS_NIGHT_DNB"   # LIGHT ROAST (Black Marble night lights)
 LIGHTS = None   # LIGHT ROAST for the open country (lightroast.NightLights), on the same grid as DATASET
 LOCK = threading.RLock()
 DATASET = None

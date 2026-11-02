@@ -35,7 +35,7 @@ BANDS = REFLECTIVE + THERMAL
 METHOD = dict(M11="viirs_m11_on_m10_bundle_grid_v1", M15="viirs_thermal_bt_on_m10_bundle_grid_v1", M16="viirs_thermal_bt_on_m10_bundle_grid_v1")
 RADIANCE = "W m-2 um-1 sr-1"
 KELVIN_STEP = 0.01   # thermal TIFFs: kelvin = stored * KELVIN_STEP, 0 = no data
-ARCHIVES = [Path(p) for p in os.environ.get("TEMPER_ARCHIVE", str(Path.home() / "Desktop" / "POSTPROCCESOR" / "archive")).split(os.pathsep) if p]
+ARCHIVES = [Path(p) for p in os.environ.get("TEMPER_ARCHIVE", os.path.join(os.path.expanduser("~"), "Desktop", "POSTPROCCESOR", "archive")).split(os.pathsep) if p]
 _INDEX = None
 
 
@@ -217,4 +217,4 @@ def backfill(data_root, countries=()):
 
 
 if __name__ == "__main__":
-    backfill(sys.argv[1] if len(sys.argv) > 1 else str(Path.home() / "Desktop" / "ARD" / "VIIRS_NIGHT_SWIR"), sys.argv[2:])
+    backfill(sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.expanduser("~"), "Desktop", "ARD", "VIIRS_NIGHT_SWIR"), sys.argv[2:])
